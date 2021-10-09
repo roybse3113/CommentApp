@@ -1,13 +1,38 @@
 import React, { useState, useEffect, Component } from 'react'
- 
-const Form = () => {
-    const [userInput, changeUserInput] = useState('')
-    return (
+
+const Form = ({ onAdd }) => {
+  const [userInput, changeUserInput] = useState('')
+  const [userName, changeUserName] = useState('')
+
+  const onSubmit = e => {
+    console.log('userinput', userInput)
+
+    onAdd({ userInput, userName })
+  }
+
+  return (
+    <div>
+      <form onSubmit={onSubmit}>
         <div>
-        <input type="text" value={userInput} onChange={e => changeUserInput(e.target.value)} />
-            <input type="text" value={userInput} onChange={e => changeUserInput(e.target.value)} />
+          <label>Name</label>
+          <input
+            type='text'
+            value={userName}
+            onChange={e => changeUserName(e.target.value)}
+          />
         </div>
-    )
+        <div>
+          <label>Post</label>
+          <input
+            type='text'
+            value={userInput}
+            onChange={e => changeUserInput(e.target.value)}
+          />
+        </div>
+        <input type='submit' value='Add post'></input>
+      </form>
+    </div>
+  )
 }
 
 export default Form
