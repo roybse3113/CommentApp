@@ -1,6 +1,10 @@
 import React from 'react'
- 
+import Form from './Form'
 const App = () => (
-  <h1>Your react app!</h1>
+  <div>
+    <h1>yo</h1>
+    <Form />
+  </div>
+
 )
 export default App
