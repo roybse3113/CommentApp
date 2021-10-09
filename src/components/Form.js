@@ -1,37 +1,46 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState } from 'react'
 
 const Form = ({ onAdd }) => {
-  const [userInput, changeUserInput] = useState('')
-  const [userName, changeUserName] = useState('')
+  const [input, setInput] = useState('')
+  const [name, setName] = useState('')
 
   const onSubmit = e => {
-    console.log('userinput', userInput)
+    e.preventDefault()
 
-    onAdd({ userInput, userName })
+    if (!input || !name) {
+      alert('Please add name and input')
+      return
+    }
+
+    onAdd({ input, name })
+
+    setInput('')
+    setName('')
   }
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label>Name</label>
-          <input
-            type='text'
-            value={userName}
-            onChange={e => changeUserName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Post</label>
-          <input
-            type='text'
-            value={userInput}
-            onChange={e => changeUserInput(e.target.value)}
-          />
-        </div>
-        <input type='submit' value='Add post'></input>
-      </form>
-    </div>
+    <form onSubmit={onSubmit}>
+      <div>
+        <label>Name</label>
+        <input
+          type='text'
+          placeholder='Name'
+          value={name}
+          onChange={e => setName(e.target.value)}
+        ></input>
+      </div>
+      <div>
+        <label>Input</label>
+        <input
+          type='text'
+          placeholder='Post'
+          value={input}
+          onChange={e => setInput(e.target.value)}
+        ></input>
+      </div>
+
+      <input type='submit' value='Post' className='btn btn-block'></input>
+    </form>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from './Form'
 
-const AddPost = ({ onAdd }) => {
+const AddReply = ({ onAdd }) => {
   return (
     <div>
       <Form onAdd={onAdd} />
@@ -9,4 +9,4 @@ const AddPost = ({ onAdd }) => {
   )
 }
 
-export default AddPost
+export default AddReply
