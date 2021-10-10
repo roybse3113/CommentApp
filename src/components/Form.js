@@ -25,19 +25,19 @@ const Form = ({ onAdd, depth }) => {
       ) : (
         <div>
           <div>
-            <label>Name</label>
             <input
+              className='nameInput'
               type='text'
-              placeholder='Name'
+              placeholder='Name...'
               value={name}
               onChange={e => setName(e.target.value)}
             ></input>
           </div>
           <div>
-            <label>Input</label>
             <input
+              className='postInput'
               type='text'
-              placeholder='Post'
+              placeholder='Write a new post...'
               value={input}
               onChange={e => setInput(e.target.value)}
             ></input>

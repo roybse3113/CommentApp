@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import AddPost from './AddPost'
 import Posts from './Posts'
+import './App.css'
+
 const App = () => {
   const [posts, setPosts] = useState([])
 
@@ -11,8 +13,8 @@ const App = () => {
   }
 
   return (
-    <div>
-      <h1>yo</h1>
+    <div className='original'>
+      <h1>Add a Post</h1>
       <AddPost onAdd={addPost} />
       <Posts posts={posts} />
     </div>

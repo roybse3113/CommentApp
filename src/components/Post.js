@@ -6,6 +6,7 @@ import './post.css'
 
 const Post = ({ post }) => {
   const [replies, setReplies] = useState([])
+  const [showAddReply, setShowAddReply] = useState(false)
 
   const addReply = reply => {
     const id = Math.floor(Math.random() * 1000 + 1)
@@ -14,11 +15,20 @@ const Post = ({ post }) => {
   }
   return (
     <div className='post'>
+      <h1>New Post</h1>
       <h3>{post.input}</h3>
       <h3>{post.name}</h3>
       <VoteButton />
-      <AddReply onAdd={addReply} />
-      <Replies replies={replies} />
+      <button onClick={() => setShowAddReply(!showAddReply)}>Add reply</button>
+      {showAddReply ? (
+        <div>
+          {() => setShowAddReply(!showAddReply)}
+          <AddReply onAdd={addReply} />
+          <Replies replies={replies} />
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   )
 }
