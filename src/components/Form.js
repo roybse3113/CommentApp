@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 
-const Form = ({ onAdd }) => {
+const Form = ({ onAdd, depth }) => {
   const [input, setInput] = useState('')
   const [name, setName] = useState('')
 
   const onSubmit = e => {
     e.preventDefault()
 
-    if (!input || !name) {
-      alert('Please add name and input')
-      return
-    }
+    // if (!input || !name) {
+    //   alert('Please add name and input')
+    //   return
+    // }
 
     onAdd({ input, name })
 
@@ -20,26 +20,35 @@ const Form = ({ onAdd }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div>
-        <label>Name</label>
-        <input
-          type='text'
-          placeholder='Name'
-          value={name}
-          onChange={e => setName(e.target.value)}
-        ></input>
-      </div>
-      <div>
-        <label>Input</label>
-        <input
-          type='text'
-          placeholder='Post'
-          value={input}
-          onChange={e => setInput(e.target.value)}
-        ></input>
-      </div>
-
-      <input type='submit' value='Post' className='btn btn-block'></input>
+      {depth === 3 ? (
+        ''
+      ) : (
+        <div>
+          <div>
+            <label>Name</label>
+            <input
+              type='text'
+              placeholder='Name'
+              value={name}
+              onChange={e => setName(e.target.value)}
+            ></input>
+          </div>
+          <div>
+            <label>Input</label>
+            <input
+              type='text'
+              placeholder='Post'
+              value={input}
+              onChange={e => setInput(e.target.value)}
+            ></input>
+          </div>
+        </div>
+      )}
+      {depth === 3 || !name || !input ? (
+        ''
+      ) : (
+        <input type='submit' value='Post' className='btn btn-block'></input>
+      )}
     </form>
   )
 }

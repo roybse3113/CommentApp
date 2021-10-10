@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Replies from './Replies'
 import AddReply from './AddReply'
+import VoteButton from './VoteButton'
+import './post.css'
 
 const Post = ({ post }) => {
   const [replies, setReplies] = useState([])
@@ -11,9 +13,10 @@ const Post = ({ post }) => {
     setReplies([...replies, newReply])
   }
   return (
-    <div>
+    <div className='post'>
       <h3>{post.input}</h3>
       <h3>{post.name}</h3>
+      <VoteButton />
       <AddReply onAdd={addReply} />
       <Replies replies={replies} />
     </div>
