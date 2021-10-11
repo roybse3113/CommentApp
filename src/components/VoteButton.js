@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './VoteButton.css'
 
 const VoteButton = () => {
   const [count, setCount] = useState(0)
@@ -12,10 +13,14 @@ const VoteButton = () => {
   }
 
   return (
-    <div>
+    <div className='voteButtons'>
+      <button className='thumbsUp' onClick={upVote}>
+        <i className='far fa-arrow-alt-circle-up'></i>
+      </button>
       <div>{count}</div>
-      <button onClick={upVote}>Like</button>
-      <button onClick={downVote}>Dislike</button>
+      <button className='thumbsDown' onClick={downVote}>
+        <i className='far fa-arrow-alt-circle-down'></i>
+      </button>
     </div>
   )
 }

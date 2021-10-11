@@ -7,11 +7,6 @@ const Form = ({ onAdd, depth }) => {
   const onSubmit = e => {
     e.preventDefault()
 
-    // if (!input || !name) {
-    //   alert('Please add name and input')
-    //   return
-    // }
-
     onAdd({ input, name })
 
     setInput('')
@@ -34,30 +29,25 @@ const Form = ({ onAdd, depth }) => {
             ></input>
           </div>
           <div>
-            <input
+            <textarea
               className='postInput'
               type='text'
               placeholder='Write a new post...'
               value={input}
               onChange={e => setInput(e.target.value)}
-            ></input>
+            ></textarea>
           </div>
         </div>
       )}
       {depth === 3 || !name || !input ? (
         ''
       ) : (
-        <input type='submit' value='Post' className='btn btn-block'></input>
+        <button className='submitButton' type='submit'>
+          <i class='far fa-paper-plane'></i> Submit
+        </button>
       )}
     </form>
   )
 }
 
 export default Form
-
-// export default () => {
-//   const [userInput, changeUserInput] = useState('')
-//   return (
-//     <input type="text" value={userInput} onChange={e => changeUserInput(e.target.value)} />
-//   )
-// }

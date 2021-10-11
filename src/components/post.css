@@ -2,10 +2,19 @@
   max-width: 500px;
   margin: 30px auto;
   overflow: auto;
-  min-height: 300px;
+  min-height: 200px;
   border: 2px solid steelblue;
-  padding: 30px;
+  padding: 20px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px black;
   text-align: center;
+}
+
+h1.postTitle {
+  text-align: left;
+}
+
+div.name {
+  color: rgb(3, 131, 46);
+  text-align: left;
 }

@@ -13,22 +13,32 @@ const Post = ({ post }) => {
     const newReply = { id, ...reply }
     setReplies([...replies, newReply])
   }
+
   return (
     <div className='post'>
-      <h1>New Post</h1>
-      <h3>{post.input}</h3>
-      <h3>{post.name}</h3>
       <VoteButton />
-      <button onClick={() => setShowAddReply(!showAddReply)}>Add reply</button>
+      <h1 className='postTitle'>New Post</h1>
+      <h2>
+        <div className='name'>{post.name}</div>
+      </h2>
+      <p>{post.input}</p>
+
+      <button
+        className='addReply'
+        onClick={() => setShowAddReply(!showAddReply)}
+      >
+        <i className='fas fa-reply'></i> Reply
+      </button>
+
       {showAddReply ? (
         <div>
-          {() => setShowAddReply(!showAddReply)}
           <AddReply onAdd={addReply} />
-          <Replies replies={replies} />
         </div>
       ) : (
         ''
       )}
+
+      <Replies replies={replies} />
     </div>
   )
 }

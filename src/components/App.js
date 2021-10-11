@@ -13,9 +13,14 @@ const App = () => {
   }
 
   return (
-    <div className='original'>
-      <h1>Add a Post</h1>
-      <AddPost onAdd={addPost} />
+    <div>
+      <h1 className='title'>
+        React Comment App <i class='fas fa-comments'></i>
+      </h1>
+      <div className='original'>
+        <h1 className='mainHeader'>Add a Post</h1>
+        <AddPost onAdd={addPost} />
+      </div>
       <Posts posts={posts} />
     </div>
   )

@@ -1,0 +1,23 @@
+button.thumbsDown {
+  padding: 5;
+  border: none;
+  background: none;
+}
+
+button.thumbsDown:hover {
+  color: red;
+}
+
+button.thumbsUp:hover {
+  color: green;
+}
+
+button.thumbsUp {
+  padding: 5;
+  border: none;
+  background: none;
+}
+
+div.voteButtons {
+  float: right;
+}
