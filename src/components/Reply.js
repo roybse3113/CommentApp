@@ -1,33 +1,36 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import VoteButton from './VoteButton'
 import './reply.css'
 import AddReply from './AddReply'
-import Replies from './Replies'
 
 const Reply = ({ reply, depth }) => {
   const [replies, setReplies] = useState([])
   const [showAddReply, setShowAddReply] = useState(false)
 
-  const addReply = reply => {
-    const id = Math.floor(Math.random() * 1000 + 1)
-    const newReply = { id, ...reply }
+  const addReply = r => {
+    const id = uuidv4()
+    const newReply = { id, ...r }
     setReplies([...replies, newReply])
   }
 
   return (
-    <div className='reply'>
+    <div className="reply">
       <VoteButton />
-      <h3 className='name'>{reply.name}</h3>
+      <h3 className="name">{reply.name}</h3>
       <p>{reply.input}</p>
 
-      {depth === 3 ? (
+      {depth === 2 ? (
         ''
       ) : (
         <button
-          className='addReply'
+          type="button"
+          className="addReply"
           onClick={() => setShowAddReply(!showAddReply)}
         >
-          <i className='fas fa-reply'></i>
+          <i className="fas fa-reply" />
+          {' '}
+          Reply
         </button>
       )}
 
@@ -39,7 +42,15 @@ const Reply = ({ reply, depth }) => {
         ''
       )}
 
-      <Replies replies={replies} depth={depth} />
+      <div>
+        {replies.map(rep => (
+          <Reply
+            key={rep.id}
+            reply={rep}
+            depth={typeof depth === 'undefined' ? 1 : depth + 1}
+          />
+        ))}
+      </div>
     </div>
   )
 }

@@ -15,19 +15,21 @@ const Post = ({ post }) => {
   }
 
   return (
-    <div className='post'>
+    <div className="post">
       <VoteButton />
-      <h1 className='postTitle'>New Post</h1>
       <h2>
-        <div className='name'>{post.name}</div>
+        <div className="name">{post.name}</div>
       </h2>
       <p>{post.input}</p>
 
       <button
-        className='addReply'
+        type="button"
+        className="addReply"
         onClick={() => setShowAddReply(!showAddReply)}
       >
-        <i className='fas fa-reply'></i> Reply
+        <i className="fas fa-reply" />
+        {' '}
+        Reply
       </button>
 
       {showAddReply ? (

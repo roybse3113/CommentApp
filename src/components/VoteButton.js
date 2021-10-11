@@ -13,13 +13,13 @@ const VoteButton = () => {
   }
 
   return (
-    <div className='voteButtons'>
-      <button className='thumbsUp' onClick={upVote}>
-        <i className='far fa-arrow-alt-circle-up'></i>
+    <div className="voteButtons">
+      <button type="button" className="thumbsUp" onClick={upVote}>
+        <i className="far fa-arrow-alt-circle-up" />
       </button>
       <div>{count}</div>
-      <button className='thumbsDown' onClick={downVote}>
-        <i className='far fa-arrow-alt-circle-down'></i>
+      <button type="button" className="thumbsDown" onClick={downVote}>
+        <i className="far fa-arrow-alt-circle-down" />
       </button>
     </div>
   )

@@ -1,18 +1,20 @@
 .reply {
   max-width: 500px;
-  margin: 25px auto;
   overflow: auto;
   min-height: 150px;
-  border-left: 1px solid steelblue;
+  border-left: 1px solid grey;
   padding: 20px;
-  border-radius: 5px;
+}
+
+h2.replyTitle {
+  text-align: left;
 }
 
 h3.name {
   text-align: left;
-  color: rgb(3, 131, 46);
+  color: steelblue;
 }
 
 div.reply {
-  margin-top: 50px;
+  margin-top: 45px;
 }
