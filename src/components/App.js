@@ -21,8 +21,12 @@ const App = () => {
         <i className="fas fa-comments" />
       </h1>
       <div className="original">
-        <h2 className="mainHeader">Add a Post</h2>
-        <AddPost onAdd={addPost} />
+        <h2 className="mainHeader">
+          Add Post
+          {' '}
+          <i className="fas fa-bullhorn" />
+        </h2>
+        <AddPost className="inputs" onAdd={addPost} />
       </div>
       <Posts posts={posts} />
     </div>

@@ -14,15 +14,25 @@ const Reply = ({ reply, depth }) => {
     setReplies([...replies, newReply])
   }
 
-  return (
-    <div className="reply">
-      <VoteButton />
-      <h3 className="name">{reply.name}</h3>
-      <p>{reply.input}</p>
+  const showAdd = condition => {
+    if (condition) {
+      return (
+        <div>
+          <AddReply
+            prevName={reply.name}
+            setShowAddReply={setShowAddReply}
+            onAdd={addReply}
+            depth={depth}
+          />
+        </div>
+      )
+    }
+    return ''
+  }
 
-      {depth === 2 ? (
-        ''
-      ) : (
+  const showButton = val => {
+    if (val < 2) {
+      return (
         <button
           type="button"
           className="addReply"
@@ -32,15 +42,23 @@ const Reply = ({ reply, depth }) => {
           {' '}
           Reply
         </button>
-      )}
+      )
+    }
+    return ''
+  }
 
-      {showAddReply ? (
-        <div>
-          <AddReply onAdd={addReply} depth={depth} />
-        </div>
-      ) : (
-        ''
-      )}
+  return (
+    <div className="reply">
+      <VoteButton />
+      <h3 className="name">
+        <i className="far fa-comment-dots" />
+        {' '}
+        {reply.name}
+      </h3>
+      <p>{reply.input}</p>
+
+      {showButton(depth)}
+      {showAdd(showAddReply)}
 
       <div>
         {replies.map(rep => (

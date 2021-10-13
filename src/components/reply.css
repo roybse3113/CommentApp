@@ -1,9 +1,10 @@
 .reply {
   max-width: 500px;
   overflow: auto;
-  min-height: 150px;
+  min-height: 100px;
   border-left: 1px solid grey;
-  padding: 20px;
+  border-right: 1px solid grey;
+  padding: 10px;
 }
 
 h2.replyTitle {
@@ -16,5 +17,5 @@ h3.name {
 }
 
 div.reply {
-  margin-top: 45px;
+  margin-top: 39px;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import Replies from './Replies'
 import AddReply from './AddReply'
 import VoteButton from './VoteButton'
@@ -8,39 +9,48 @@ const Post = ({ post }) => {
   const [replies, setReplies] = useState([])
   const [showAddReply, setShowAddReply] = useState(false)
 
-  const addReply = reply => {
-    const id = Math.floor(Math.random() * 1000 + 1)
-    const newReply = { id, ...reply }
+  const addReply = r => {
+    const id = uuidv4()
+    const newReply = { id, ...r }
     setReplies([...replies, newReply])
   }
 
-  return (
-    <div className="post">
-      <VoteButton />
-      <h2>
-        <div className="name">{post.name}</div>
-      </h2>
-      <p>{post.input}</p>
-
-      <button
-        type="button"
-        className="addReply"
-        onClick={() => setShowAddReply(!showAddReply)}
-      >
-        <i className="fas fa-reply" />
-        {' '}
-        Reply
-      </button>
-
-      {showAddReply ? (
+  const showAdd = condition => {
+    if (condition) {
+      return (
         <div>
-          <AddReply onAdd={addReply} />
+          <AddReply prevName={post.name} setShowAddReply={setShowAddReply} onAdd={addReply} depth={0} />
         </div>
-      ) : (
-        ''
-      )}
+      )
+    }
+    return ''
+  }
 
-      <Replies replies={replies} />
+  return (
+    <div>
+      <div className="post">
+        <VoteButton />
+        <h3>
+          <div className="name">
+            <i className="fas fa-mail-bulk" />
+            {' '}
+            {post.name}
+          </div>
+        </h3>
+        <p>{post.input}</p>
+
+        <button
+          type="button"
+          className="addReply"
+          onClick={() => setShowAddReply(!showAddReply)}
+        >
+          <i className="fas fa-reply" />
+          {' '}
+          Reply
+        </button>
+        {showAdd(showAddReply)}
+        <Replies replies={replies} />
+      </div>
     </div>
   )
 }

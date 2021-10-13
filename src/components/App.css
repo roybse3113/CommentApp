@@ -6,12 +6,11 @@
 }
 
 .original {
-  border: 2px solid rgb(12, 89, 153);
   border-radius: 5px;
   padding: 10px;
-  height: 275px;
+  height: 250px;
   width: 500px;
-  box-shadow: 0px 0px 15px grey;
+  box-shadow: 0px 0px 10px grey;
 }
 
 h2.mainHeader {
@@ -27,14 +26,16 @@ h1.title {
 input[type='text'] {
   width: 250px;
   height: 75px;
-  border: 2px solid steelblue;
+  border: 2px solid rgb(175, 175, 175);
   border-radius: 5px;
   word-wrap: break-word;
   padding: 5px;
 }
 
 input[type='text']:focus {
-  box-shadow: 0px 0px 15px grey;
+  transition-duration: 0.3s;
+  box-shadow: 0px 0px 15px steelblue;
+  border: 2px solid steelblue;
 }
 
 .original {
@@ -50,15 +51,16 @@ input.nameInput {
 }
 
 button.addReply {
-  float: center;
   float: left;
   margin-top: 20px;
   background: none;
   border: none;
+  color: rgb(184, 184, 184);
 }
 
 button.addReply:hover {
-  color: rgb(17, 86, 117);
+  transition-duration: 0.3s;
+  color: black;
 }
 
 form {
@@ -69,13 +71,14 @@ form {
 textarea {
   width: 400px;
   height: 75px;
-  border: 2px solid steelblue;
+  border: 2px solid rgb(175, 175, 175);
   border-radius: 5px;
   padding: 5px;
 }
 
 textarea:focus {
-  box-shadow: 0px 0px 15px grey;
+  transition-duration: 0.3s;
+  box-shadow: 0px 0px 15px steelblue;
 }
 
 p {
@@ -87,12 +90,14 @@ p {
 }
 
 button.submitButton {
-  margin-top: 25px;
+  margin-top: 10px;
   border: none;
   background: none;
   float: right;
+  color: rgb(184, 184, 184);
 }
 
 button.submitButton:hover {
-  color: green;
+  transition-duration: 0.3s;
+  color: black;
 }

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 
-const Form = ({ onAdd, depth }) => {
-  const [input, setInput] = useState('')
+// Form to be used by both replies and posts
+const Form = ({
+  prevName, onAdd, depth, setShowAddReply,
+}) => {
+  const [input, setInput] = useState(!prevName ? '' : `@${prevName}`.concat(' '))
   const [name, setName] = useState('')
 
   const onSubmit = e => {
@@ -9,8 +12,17 @@ const Form = ({ onAdd, depth }) => {
 
     onAdd({ input, name })
 
-    setInput('')
+    // Reset the values when typing a new post or reply
+    if (!prevName) {
+      setInput('')
+    } else {
+      setInput(prevName)
+    }
     setName('')
+    // To account for case when first adding a post where setShowAddReply is not defined
+    if (setShowAddReply) {
+      setShowAddReply(false)
+    }
   }
 
   return (
@@ -32,7 +44,7 @@ const Form = ({ onAdd, depth }) => {
             <textarea
               className="postInput"
               type="text"
-              placeholder="Write a new post..."
+              placeholder={!prevName ? 'Write your question or reply...' : `@${prevName}`}
               value={input}
               onChange={e => setInput(e.target.value)}
             />
