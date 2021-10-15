@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import AddPost from './AddPost'
-import Posts from './Posts'
-import './App.css'
+import AddPost from './components/AddPost'
+import Posts from './components/Posts'
+import './components/App.css'
 
 const App = () => {
   const [posts, setPosts] = useState([])
