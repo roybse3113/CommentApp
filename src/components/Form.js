@@ -51,7 +51,7 @@ const Form = ({
           </div>
         </div>
       )}
-      {depth === 3 || !name || !input ? (
+      {depth === 3 || !name || !input || input === `@${prevName}`.concat(' ') ? (
         ''
       ) : (
         <button className="submitButton" type="submit">
